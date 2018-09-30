@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正在为您跳转……</title>
+    <link rel="stylesheet" th:href="@{/css/interceptor.css}">
+</head>
+<body>
+    <h1></h1>
+    <div class="hh">
+        <h2>系统检测到您未登录，现跳转到登录界面...</h2>
+    </div>
+    <h1><a href="http://localhost:8888/user/toIndex">wjup_home</a></h1>
+    <div class="loading">
+        <div class="bcolor"></div>
+        <div class="text">0%</div>
+    </div>
+    <div class="click"><a href="http://localhost:8888/user/toIndex">如未自动跳转，点击这里手动跳转</a></div>
+    <script>
+        var bcolor=window.document.getElementsByClassName('bcolor');
+        var btext=window.document.getElementsByClassName('text');
+        var i=0;
+        var gon=setInterval(function(){
+            if(i<=100){
+                bcolor[0].style.width=i+'%';
+                btext[0].innerHTML=i+'%';
+            }else{
+                window.location.href='http://localhost:8888/user/toIndex';
+                clearInterval(gon);
+            }
+            i++;
+        },50)
+    </script>
+</body>
+</html>
