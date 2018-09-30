@@ -1,5 +1,5 @@
 ## wjup_blog
 
-    框架：springboot、bootstrap、mybatis、thymeleaf</br>
-    工具：idea</br>
-    数据库：mysql</br>
+    框架：springboot、bootstrap、mybatis、thymeleaf
+    工具：idea
+    数据库：mysql
