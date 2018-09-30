@@ -1,4 +1,3 @@
-# 博客小系统
 ## wjup_blog
 
     框架：springboot、bootstrap、mybatis、thymeleaf</br>
