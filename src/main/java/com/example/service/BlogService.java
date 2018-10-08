@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.entity.Blog;
 import com.example.entity.Notice;
 import com.example.mapper.BlogMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,25 @@ public class BlogService {
 
     public Notice getNotice() {
         return blogMapper.getNotice();
+    }
+
+    public Blog details(String title) {
+        return blogMapper.details(title);
+    }
+
+    public void addText(Blog blog) {
+        blogMapper.addText(blog);
+    }
+
+    public void delText(int id) {
+        blogMapper.delText(id);
+    }
+
+    public List getBlogListAll() {
+        return blogMapper.getBlogListAll();
+    }
+
+    public void cleanText(int id) {
+        blogMapper.cleanText(id);
     }
 }

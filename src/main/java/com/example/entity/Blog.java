@@ -13,6 +13,15 @@ public class Blog {
     private String creatTime;
     private String work;
     private String comment;
+    private Integer state;
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
 
     public String getWork() {
         return work;

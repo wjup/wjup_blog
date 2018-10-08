@@ -41,7 +41,7 @@ public class LoginController {
         }else{
             request.getSession().setAttribute("session_user",user);//登录成功后将用户放入session中，用于拦截
             try {
-                response.sendRedirect("/blog/getBlogList");
+                response.sendRedirect("/admin/mySelf");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -75,7 +75,7 @@ public class LoginController {
     @RequestMapping("/outUser")
     public void outUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().removeAttribute("session_user");
-        response.sendRedirect("/user/toIndex");
+        response.sendRedirect("/blog/getBlogList");
     }
 
     //拦截跳转

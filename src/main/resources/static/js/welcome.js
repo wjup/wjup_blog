@@ -19,3 +19,4 @@ var s = myDate.getSeconds();
 
 var now = year + '-' + p(month) + "-" + p(date) + " " + p(h) + ':' + p(m) + ":" + p(s);
 $('#time').html(now);
+

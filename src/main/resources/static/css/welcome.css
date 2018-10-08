@@ -4,6 +4,16 @@
 }
 .carousel img {
     width: 100%;
+    min-height: 100%;
+}
+
+/*轮播图下间距*/
+.cen{
+    padding-bottom: 20px;
+}
+/*my图片*/
+.img-circle {
+    border-radius: 37%;
 }
 
 .blog-footer {
@@ -14,3 +24,7 @@
     border-top: 1px solid #e5e5e5;
 }
 
+a:hover {
+    color:#4cae4c;
+    text-decoration:none;
+}

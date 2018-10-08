@@ -34,16 +34,16 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img th:src="@{/img/sc3.jpg}" alt="First slide">
+                <a href="#"><img th:src="@{/img/sc3.jpg}" alt="First slide"></a>
             </div>
             <div class="item">
-                <img th:src="@{/img/sc2.jpg}" alt="Second slide">
+                <a href="#"><img th:src="@{/img/sc2.jpg}" alt="Second slide"></a>
             </div>
             <div class="item">
-                <img th:src="@{/img/sc1.jpg}" alt="Third slide">
+                <a href="#"><img th:src="@{/img/sc1.jpg}" alt="Third slide"></a>
             </div>
             <div class="item">
-                <img th:src="@{/img/sc4.jpg}" alt="Third slide">
+                <a href="#"><img th:src="@{/img/sc4.jpg}" alt="Third slide"></a>
             </div>
         </div>
         <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -56,34 +56,72 @@
         </a>
     </div>
 
-    <div class="page-header">
-        <h2>最新文章</h2>
-        <!--<p class="pull-right"><b>更多>></b></p>-->
-    </div>
-    <div style="font-size: 18px" class="row" th:each="list:${blogList}">
-        <a th:href="${list.url}">
+
+    <!--轮播图下-->
+    <div class="col-xs-12 col-sm-9">
+        <div class="page-header">
+            <h3>最新文章</h3>
+            <a href="/blog/getMoreText"><p class="pull-right"><b>更多>></b></p></a>
+        </div>
+        <div style="font-size: 17px" class="row" th:each="list:${blogList}">
             <div class="col-md-1 text-right" th:text="${list.work}" style="font-size:10px;color:red;height: 50px"></div>
-            <div class="col-md-7" th:text="${list.title}" style="height: 50px">
+            <a th:href="${list.url}">
+                <div class="col-md-8" th:text="${list.title}" style="height: 50px"> </div>
+            </a>
+                <div class="col-md-3 " style="height: 50px" th:text="${list.creatTime}"></div>
+        </div>
+
+        <div class="page-header">
+            <h3>最热美图</h3>
+            <a href="/blog/getMoreImg"><p class="pull-right"><b>更多>></b></p></a>
+        </div>
+
+        <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+                <a href="">
+                    <img th:src="@{/img/mn001.jpg}" width="200" height="200" class="img-circle">
+                    <h4>Label</h4>
+                    <span class="text-muted">Something else</span>
+                </a>
             </div>
-            <div class="col-md-3 "  style="height: 50px" th:text="${list.creatTime}"> </div>
-        </a>
+        </div>
     </div>
 
-    <div class="page-header">
-        <h2>最热电影</h2>
-        <!--<p class="pull-right"><b>更多>></b></p>-->
+    <div class="cen"></div>
+    <div class="cen"></div>
+
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+
+        <!--菜单-->
+        <div class="list-group">
+            <div class="list-group">
+                <a href="#" class="list-group-item active">标签导航</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+                <a href="#" class="list-group-item">Link</a>
+            </div>
+        </div>
+
+        <!--图片-->
+        <!--<div style="width: auto;height: auto;text-align:center ;margin:0px auto;" >
+            <img style="margin:0px auto" th:src="@{/img/my.jpg}" alt="..." class="img-circle">
+        </div>-->
+        <div class="cen">dasdada</div>
+
     </div>
 </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
-<div th:replace="common/footer :: html" ></div>
+<div th:replace="common/footer :: html"></div>
 </body>
 </html>

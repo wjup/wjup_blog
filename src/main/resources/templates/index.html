@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>管理员登录</title>
     <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
     <script th:src="@{/js/index.js}"></script>
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
@@ -11,14 +11,13 @@
 <body>
 
 <div class="container">
-
     <blockquote>
         <p>Welcome to wjup_home , Have a nice day ！</p>
-        <footer>https://github.com/wjup</footer>
+        <footer><a href="https://github.com/wjup"> https://github.com/wjup</a></footer>
     </blockquote>
 
     <form class="form-signin" action="/user/loginUser" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">Please sign in</h2><br>
         <label for="userName" class="sr-only">Email address</label>
         <input type="text" id="userName" name="userName" class="form-control" placeholder="Email address" required autofocus>
         <label for="passWord" class="sr-only">Password</label>
@@ -29,7 +28,7 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" id="bt" type="submit">Sign in</button>
-        <a class="btn btn-lg btn-primary btn-block"  href="javascript:void(0)" onclick="re()">Register</a>
+        <!--<a class="btn btn-lg btn-primary btn-block"  href="javascript:void(0)" onclick="re()">Register</a>-->
     </form>
 
 </div>

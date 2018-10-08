@@ -1,13 +1,16 @@
 function re() {
     window.location.href="/user/toRegister";
 }
-$(document).ready(function () {
+
+function notice() {
     $.ajax({
         type: 'post',
-        url: '/bolg/getNotice',
-        success: function (res) {
-            $('#notice').html(res);
+        url: '/blog/getNotice',
+        success: function (res2) {
+            var res = $.parseJSON(res2);
+            $('#notice').html(res.notice);
+            $('#title').html(res.title);
         }
     })
-})
+}
 

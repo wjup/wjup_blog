@@ -27,8 +27,8 @@ public class UserInterceptor implements HandlerInterceptor {
         System.out.println(handler);
         User user = (User) request.getSession().getAttribute("session_user");
         if (user==null){
-            response.sendRedirect(request.getContextPath()+"/user/interceptor");
-//            response.sendRedirect(request.getContextPath()+"/user/toIndex");
+            response.sendRedirect(request.getContextPath()+"/blog/getBlogList");
+//            response.sendRedirect(request.getContextPath()+"/user/interceptor");
             System.out.println("已成功拦截并转发跳转");
             return false;
         }

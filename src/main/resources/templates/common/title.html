@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script th:src="@{/js/index.js}"></script>
+    <style type="text/css">
+        .navbar {
+            border-radius: 30px;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,32 +21,35 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="http://localhost:8888">首页</a></li>
-                <li><a href="#about">图片</a></li>
-                <li><a href="#about">文章</a></li>
-                <li><a href="#contact">关于</a></li>
+                <li><a href="/blog/getMoreImg">图片</a></li>
+                <li><a href="/blog/getMoreText">文章</a></li>
+                <li><a href="/about">关于</a></li>
                 <li>
-                <a type="button" data-toggle="modal" data-target=".bs-example-modal-sm">公告</a>
-                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">wjup大公告</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div id="notice">
-                                    <p>9月29日20时许，一则关于“南昌大学化粪池炸了，处在下风向的江西科技师范大学遭殃了”的消息在网上疯传。南昌大学对此辟谣称，经排查学校所有化粪池及下水管道未发生爆炸事故，恶臭来自学校附近枫生高速一运粪车泄漏所致。
-                                        “莫名搞笑，从寝室去拿快递闻了一路屎臭。”江西科技师范大学学生小李告诉记者，她从下午5点左右就闻到了恶臭，起初不知是什么原因，后来在网上看到大家都在传是隔壁邻居南昌大学化粪池炸了，她也信以为真。&hellip;
-                                    </p>
+                    <a href="javascript:void(0);" onclick="notice()" data-toggle="modal"
+                       data-target=".bs-example-modal-sm">公告</a>
+                    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+                         aria-labelledby="mySmallModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">
+                                        <div id="title"></div>
+                                    </h4>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                                <div class="modal-body">
+                                    <p>
+                                        <div id="notice"></div>
+                                    <p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </li>
 
                 <li class="dropdown">
@@ -61,15 +69,85 @@
                         <li><a href="#">声明</a></li>
                     </ul>
                 </li>
+            </ul>
+            <ul th:if="${session.session_user!=null}" class="nav navbar-nav navbar-right">
+                <li><a href="/admin/mySelf">后台管理</a></li>
+                <li><a href="/user/outUser">退出登录</a></li>
+            </ul>
+            <ul th:if="${session.session_user==null}" class="nav navbar-nav navbar-right">
+                <li><a href="/user/toIndex">管理员登录</a></li>
+            </ul>
 
+        </div>
+    </div>
+</nav>
+
+
+<!-- Static navbar -->
+<!--<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://localhost:8888">wjup_home</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li>
+                    <a onclick="notice()" data-toggle="modal" data-target=".bs-example-modal-sm">公告</a>
+                    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+                         aria-labelledby="mySmallModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">
+                                        <div id="title"></div>
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        <div id="notice"></div>
+                                    <p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                    </button>
+                                    &lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/admin/mySelf">个人中心</a></li>
                 <li><a href="/user/outUser">退出登录</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>&lt;!&ndash;/.nav-collapse &ndash;&gt;
     </div>
-</nav>
+</nav>-->
+<!--
 
 </body>
-</html>
+</html>-->
