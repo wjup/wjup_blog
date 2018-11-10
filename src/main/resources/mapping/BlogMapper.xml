@@ -3,11 +3,11 @@
 <mapper namespace="com.example.mapper.BlogMapper">
 
     <select id="getBlogList" resultType="Blog">
-        select * from blog_text WHERE state = 1 GROUP by id DESC
+        select * from blog_text WHERE state = 1 Order by id DESC
     </select>
 
     <select id="getBlogListAll" resultType="Blog">
-        select * from blog_text GROUP by id DESC
+        select * from blog_text Order by id DESC
     </select>
 
     <select id="getNotice" resultType="Notice">
