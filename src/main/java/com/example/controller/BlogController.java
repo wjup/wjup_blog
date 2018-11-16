@@ -77,6 +77,7 @@ public class BlogController{
     @RequestMapping("/edit/{id}")
     @ResponseBody
     public String edit(@PathVariable int id){
+
         return "hello all!";
     }
 }
